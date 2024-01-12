@@ -47,8 +47,8 @@ const UserMenu = () => {
     md:w-[10vw]
         "
           >
-            <UserItem label="Log in" />
-            <UserItem label="Sign up" />
+            <UserItem href="/signin" label="Log in" />
+            <UserItem href="/signup" label="Sign up" />
           </div>
         )}
       </div>
