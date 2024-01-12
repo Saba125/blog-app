@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { ToasterProvider } from "@/providers/ToastProvider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ToasterProvider />
           <Navbar />
           {children}
         </ThemeProvider>

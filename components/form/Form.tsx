@@ -3,10 +3,13 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import axios from "axios";
+import { useState } from "react";
 interface FormProps {
   type: "register" | "login";
 }
 const Form: React.FC<FormProps> = ({ type }) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
@@ -18,9 +21,11 @@ const Form: React.FC<FormProps> = ({ type }) => {
       password: "",
     },
   });
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (type === "login") {
-      console.log("Hello world");
+    }
+    if (type === "register") {
+      const response = await axios.post("/api/register", data);
     }
   };
   return (
