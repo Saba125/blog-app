@@ -1,6 +1,7 @@
 import Container from "../Container";
 import Logo from "./Logo";
 import SocialLinks from "./SocialLinks";
+import { ModeToggle } from "./ThemeToggle";
 import UserMenu from "./UserMenu";
 
 const Navbar = () => {
@@ -11,7 +12,17 @@ const Navbar = () => {
           <div className="flex items-center justify-between">
             <SocialLinks />
             <Logo />
-            <UserMenu />
+            <div
+              className="
+            flex
+            flex-row
+            items-center
+            gap-3
+            "
+            >
+              <ModeToggle />
+              <UserMenu />
+            </div>
           </div>
         </div>
       </Container>
