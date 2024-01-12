@@ -2,13 +2,15 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import Image from "next/image";
 import Avatar from "../Avatar";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import UserItem from "./UserItem";
+import { signOut, useSession } from "next-auth/react";
 const UserMenu = () => {
   const [isToggled, setIsToggled] = useState<boolean>(false);
-  const toggle = () => {
+  const toggle = useCallback(() => {
     setIsToggled((prev) => !prev);
-  };
+  }, []);
+  const { data, status } = useSession();
   return (
     <div className="relative">
       <div
@@ -47,8 +49,18 @@ const UserMenu = () => {
     md:w-[10vw]
         "
           >
-            <UserItem href="/signin" label="Log in" />
-            <UserItem href="/signup" label="Sign up" />
+            {status === "unauthenticated" ? (
+              <>
+                <UserItem href="/signin" label="Log in" />
+                <UserItem href="/signup" label="Sign up" />
+              </>
+            ) : (
+              <>
+                <UserItem href="/signin" label="Create blog" />
+                <UserItem href="/signin" label="View blog" />
+                <UserItem href="" onClick={() => signOut()} label="Log out" />
+              </>
+            )}
           </div>
         )}
       </div>

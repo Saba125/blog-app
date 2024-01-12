@@ -5,6 +5,8 @@ import { Button } from "../ui/button";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
 interface FormProps {
   type: "register" | "login";
 }
@@ -23,9 +25,27 @@ const Form: React.FC<FormProps> = ({ type }) => {
   });
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (type === "login") {
+      try {
+        await signIn('credentials', {
+          ...data,
+          redirect: false
+        })
+        console.log('Registered')
+      } catch (error) {
+        console.log(error)
+      }
+     
     }
     if (type === "register") {
-      const response = await axios.post("/api/register", data);
+      setIsLoading(true);
+      try {
+        const response = await axios.post("/api/register", data);
+        toast.success("User registered");
+        setIsLoading(false);
+      } catch (error) {
+        toast.error("Error registering");
+        setIsLoading(false);
+      }
     }
   };
   return (
@@ -104,7 +124,12 @@ const Form: React.FC<FormProps> = ({ type }) => {
               </p>
             )}
           </div>
-          <Button className="mt-2" type="submit" variant={"destructive"}>
+          <Button
+            disabled={isLoading}
+            className="mt-2"
+            type="submit"
+            variant={"destructive"}
+          >
             {" "}
             {type === "register" ? "Sign-up" : "Log in"}{" "}
           </Button>
