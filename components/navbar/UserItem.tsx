@@ -15,10 +15,10 @@ const UserItem: React.FC<UserItemProps> = ({ label, href, onClick }) => {
          px-2
          py-3
          font-semibold
-         shadow-md
          transition
          hover:bg-neutral-100
          dark:text-black
+         border-b-[1px]
         "
       onClick={onClick}
     >

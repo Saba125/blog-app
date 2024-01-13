@@ -7,6 +7,9 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
+import { AiFillGithub } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
+import SocialButton from "./SocialButton";
 interface FormProps {
   type: "register" | "login";
 }
@@ -26,15 +29,14 @@ const Form: React.FC<FormProps> = ({ type }) => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (type === "login") {
       try {
-        await signIn('credentials', {
+        await signIn("credentials", {
           ...data,
-          redirect: false
-        })
-        console.log('Registered')
+          redirect: false,
+        });
+        console.log("Registered");
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-     
     }
     if (type === "register") {
       setIsLoading(true);
@@ -124,15 +126,23 @@ const Form: React.FC<FormProps> = ({ type }) => {
               </p>
             )}
           </div>
-          <Button
-            disabled={isLoading}
-            className="mt-2"
-            type="submit"
-            variant={"destructive"}
-          >
-            {" "}
-            {type === "register" ? "Sign-up" : "Log in"}{" "}
-          </Button>
+          <div className="flex flex-col gap-3">
+            <Button
+              disabled={isLoading}
+              className="mt-2 w-full"
+              type="submit"
+              variant={"destructive"}
+            >
+              {" "}
+              {type === "register" ? "Sign-up" : "Log in"}{" "}
+            </Button>
+            <hr />
+            <div className="flex flex-col gap-3">
+              <SocialButton icon={FcGoogle} label="Continue with google" />
+              <SocialButton icon={AiFillGithub} label="Continue with github" />
+
+            </div>
+          </div>
         </form>
       </div>
     </div>
