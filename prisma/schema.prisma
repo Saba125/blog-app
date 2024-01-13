@@ -22,7 +22,7 @@ model User {
   favoriteIds    String[]  @db.ObjectId
 
   accounts Account[]
-  Category Category[]
+  Post     Post[]
 }
 
 model Account {
@@ -43,7 +43,7 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model Category {
+model Post {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   catName   String   @unique
   title     String
@@ -53,11 +53,11 @@ model Category {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user      User     @relation(fields: [userEmail], references: [email])
-  Post      Post[]
+  category  Category @relation(fields: [catName], references: [catName])
 }
 
-model Post {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  catName  String
-  category Category @relation(fields: [catName], references: [catName])
+model Category {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  catName String @unique
+  Post    Post[]
 }
