@@ -16,7 +16,7 @@ const Hero = () => {
       flex-row
       items-center
       justify-center
-      gap-3
+      gap-5
       "
         >
           {/* Image Container */}
@@ -36,10 +36,21 @@ const Hero = () => {
           </div>
           <div
             className="
+        flex
         flex-1
+        flex-col
+        gap-3
         "
           >
-            <h3>Hello world</h3>
+            <h3 className="text-2xl font-bold">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </h3>
+            <p className="text-xl font-light ">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Similique dolorem fugit nam consectetur dignissimos quae maxime
+              modi voluptate molestiae, enim incidunt suscipit cupiditate,
+              obcaecati natus eos harum quam, soluta officiis.
+            </p>
           </div>
         </div>
       </Container>
