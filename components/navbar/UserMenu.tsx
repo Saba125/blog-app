@@ -32,7 +32,7 @@ const UserMenu = () => {
       >
         <AiOutlineMenu />
         <div className="hidden md:block">
-          <Avatar src="" />
+          <Avatar src={data?.user?.image} />
         </div>
         {isToggled && (
           <div

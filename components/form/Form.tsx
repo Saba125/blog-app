@@ -138,9 +138,16 @@ const Form: React.FC<FormProps> = ({ type }) => {
             </Button>
             <hr />
             <div className="flex flex-col gap-3">
-              <SocialButton icon={FcGoogle} label="Continue with google" />
-              <SocialButton icon={AiFillGithub} label="Continue with github" />
-
+              <SocialButton
+                onClick={() => signIn("google")}
+                icon={FcGoogle}
+                label="Continue with google"
+              />
+              <SocialButton
+                onClick={() => signIn("github")}
+                icon={AiFillGithub}
+                label="Continue with github"
+              />
             </div>
           </div>
         </form>
