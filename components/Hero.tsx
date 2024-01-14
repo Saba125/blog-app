@@ -24,8 +24,10 @@ const Hero = () => {
           <div
             className="
         relative
-        h-[350px]
+        hidden
+        h-[350px]  
         flex-1
+        md:block
         "
           >
             <Image

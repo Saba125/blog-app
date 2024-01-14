@@ -1,32 +1,8 @@
 import Container from "../Container";
 import CategoryItem from "./CategoryItem";
-const categories = [
-  {
-    catName: "Coding",
-    imageUrl: "/coding.png",
-  },
-  {
-    catName: "Fashion",
-    imageUrl: "/fashion.png",
-  },
-  {
-    catName: "Style",
-    imageUrl: "/style.png",
-  },
-  {
-    catName: "Food",
-    imageUrl: "/food.png",
-  },
-  {
-    catName: "Travel",
-    imageUrl: "/travel.png",
-  },
-  {
-    catName: "Culture",
-    imageUrl: "/culture.png",
-  },
-];
-const CategoryList = () => {
+import prisma from "@/lib/prisma";
+const CategoryList = async () => {
+  const categories = await prisma.category.findMany();
   return (
     <div
       className="

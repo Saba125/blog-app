@@ -33,7 +33,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
           ...data,
           redirect: false,
         });
-        console.log("Registered");
+        toast.success("Successfully signed in");
       } catch (error) {
         console.log(error);
       }
