@@ -1,5 +1,6 @@
 import Container from "./Container";
 import Image from "next/image";
+import { Button } from "./ui/button";
 const Hero = () => {
   return (
     <div className="mt-10">
@@ -51,6 +52,9 @@ const Hero = () => {
               modi voluptate molestiae, enim incidunt suscipit cupiditate,
               obcaecati natus eos harum quam, soluta officiis.
             </p>
+            <div>
+              <Button variant="destructive">Read More</Button>
+            </div>
           </div>
         </div>
       </Container>

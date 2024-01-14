@@ -57,7 +57,8 @@ model Post {
 }
 
 model Category {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  catName String @unique
-  Post    Post[]
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  catName  String @unique
+  imageUrl String
+  Post     Post[]
 }
