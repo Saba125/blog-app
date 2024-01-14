@@ -30,7 +30,7 @@ const Hero = () => {
           >
             <Image
               className="object-cover"
-              src="/culture.png"
+              src="/p1.jpeg"
               fill
               alt="Post-img"
             />

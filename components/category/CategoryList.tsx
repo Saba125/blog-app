@@ -49,10 +49,9 @@ const CategoryList = () => {
         mt-4
         flex
         flex-row
-        flex-wrap
-        items-center
+        flex-wrap  
         justify-between
-        gap-[20px]
+        gap-[10px]
         "
         >
           {categories.map((category) => {

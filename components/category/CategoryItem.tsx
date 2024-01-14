@@ -7,23 +7,26 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ catName, imageUrl }) => {
   return (
     <div
       className="
-    flex
-    h-[80px]
-    w-[15%]
-    items-center
+      flex
+      h-[80px]
+      w-full
+      items-center
+      
     justify-center
     gap-[10px]
     rounded-lg
     bg-rose-500
+    sm:w-[45%]
+    md:w-[15%]
   "
     >
-      {catName}
+      <span> {catName} </span>
       <Image
         src={imageUrl}
         width={32}
         height={32}
         alt={catName}
-        className="rounded-full object-cover"
+        className=" block h-[32px] w-[32px]  rounded-[50%] "
       />
     </div>
   );
