@@ -1,7 +1,12 @@
 import Container from "./Container";
 import Image from "next/image";
+import prisma from "@/lib/prisma";
 import { Button } from "./ui/button";
-const Hero = () => {
+import SinglePost from "./SinglePost";
+import { formatTime } from "@/lib/format";
+const Hero = async () => {
+  const singlePost = await prisma.post.findFirst();
+  console.log(singlePost);
   return (
     <div className="mt-10">
       <Container>
@@ -12,7 +17,7 @@ const Hero = () => {
         {/* Content */}
         <div
           className="
-      mt-9
+      mt-5
       flex
       flex-row
       items-center
@@ -32,7 +37,7 @@ const Hero = () => {
           >
             <Image
               className="object-cover"
-              src="/p1.jpeg"
+              src={singlePost?.imageUrl || "/p1.jpeg"}
               fill
               alt="Post-img"
             />
@@ -45,15 +50,15 @@ const Hero = () => {
         gap-3
         "
           >
-            <h3 className="text-2xl font-bold">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            </h3>
-            <p className="text-xl font-light ">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Similique dolorem fugit nam consectetur dignissimos quae maxime
-              modi voluptate molestiae, enim incidunt suscipit cupiditate,
-              obcaecati natus eos harum quam, soluta officiis.
-            </p>
+            <div className="flex flex-row justify-between text-sm">
+              <span>Author: {singlePost?.userEmail}</span>
+              <span className="pr-5">
+                {" "}
+                Created: {formatTime(singlePost?.createdAt)}{" "}
+              </span>
+            </div>
+            <h3 className="text-2xl font-bold">{singlePost?.title}</h3>
+            <p className="text-lg font-light ">{singlePost?.body}</p>
             <div>
               <Button variant="destructive">Read More</Button>
             </div>

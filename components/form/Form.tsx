@@ -10,11 +10,13 @@ import { signIn } from "next-auth/react";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import SocialButton from "./SocialButton";
+import { useRouter } from "next/navigation";
 interface FormProps {
   type: "register" | "login";
 }
 const Form: React.FC<FormProps> = ({ type }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -34,6 +36,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
           redirect: false,
         });
         toast.success("Successfully signed in");
+        router.push("/");
       } catch (error) {
         console.log(error);
       }
@@ -44,6 +47,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
         const response = await axios.post("/api/register", data);
         toast.success("User registered");
         setIsLoading(false);
+        router.push("/");
       } catch (error) {
         toast.error("Error registering");
         setIsLoading(false);
