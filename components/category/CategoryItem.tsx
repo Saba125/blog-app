@@ -8,7 +8,7 @@ interface CategoryItemProps {
 const CategoryItem: React.FC<CategoryItemProps> = ({ catName, imageUrl }) => {
   return (
     <Link
-      href={""}
+      href={`/categories/${catName}`}
       className={clsx(
         "flex",
         "h-[80px]",

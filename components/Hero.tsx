@@ -4,9 +4,9 @@ import prisma from "@/lib/prisma";
 import { Button } from "./ui/button";
 import SinglePost from "./SinglePost";
 import { formatTime } from "@/lib/format";
+import { useRouter } from "next/navigation";
 const Hero = async () => {
   const singlePost = await prisma.post.findFirst();
-  console.log(singlePost);
   return (
     <div className="mt-10">
       <Container>
