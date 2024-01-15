@@ -10,7 +10,7 @@ const Hero = async () => {
   return (
     <div className="mt-10">
       <Container>
-        <h3 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl ">
+        <h3 className=" text-xl sm:text-2xl md:text-4xl lg:text-5xl ">
           {" "}
           <b>Hey, Je dev here!</b> Discover my stories and creative ideas.{" "}
         </h3>
