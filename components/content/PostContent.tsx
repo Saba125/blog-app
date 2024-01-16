@@ -10,7 +10,11 @@ const PostContent = async (props: Props) => {
     orderBy: { createdAt: "desc" },
   });
   return (
-    <div>{posts?.map((post) => <SinglePost post={post} key={post.id} />)}</div>
+    <div>
+      {posts?.map((post) => (
+        <SinglePost isReadMore post={post} key={post.id} />
+      ))}
+    </div>
   );
 };
 

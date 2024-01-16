@@ -2,11 +2,14 @@ import React from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Post } from "@prisma/client";
+import { formatTime } from "@/lib/format";
 interface SinglePostProps {
+  isReadMore: boolean;
   post: Post;
 }
 const SinglePost: React.FC<SinglePostProps> = ({
   post: { createdAt, title, imageUrl, userEmail, body },
+  isReadMore,
 }) => {
   return (
     <div>
@@ -41,11 +44,20 @@ const SinglePost: React.FC<SinglePostProps> = ({
         gap-3
         "
         >
+           <div className="flex flex-row justify-between text-sm">
+              <span>Author: {userEmail}</span>
+              <span className="pr-5">
+                {" "}
+                Created: {formatTime(createdAt)}{" "}
+              </span>
+            </div>
           <h3 className="text-2xl font-bold">{title}</h3>
-          <p className="text-lg font-light ">{body}</p>
-          <div>
-            <Button variant="destructive">Read More</Button>
-          </div>
+          <p className="text-lg font-light "> {isReadMore ? body.substring(0, 220) : body}... </p>
+          {isReadMore && (
+            <div>
+              <Button variant="destructive">Read More</Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
