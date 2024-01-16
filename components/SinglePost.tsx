@@ -5,10 +5,10 @@ import { Post } from "@prisma/client";
 import { formatTime } from "@/lib/format";
 interface SinglePostProps {
   isReadMore: boolean;
-  post: Post;
+  post: Post | null;
 }
 const SinglePost: React.FC<SinglePostProps> = ({
-  post: { createdAt, title, imageUrl, userEmail, body },
+  post,
   isReadMore,
 }) => {
   return (
@@ -34,7 +34,7 @@ const SinglePost: React.FC<SinglePostProps> = ({
         md:block
         "
         >
-          <Image className="object-cover" src={imageUrl} fill alt="Post-img" />
+          <Image className="object-cover" src={post?.imageUrl || "/p1.jpeg"} fill alt="Post-img" />
         </div>
         <div
           className="
@@ -45,14 +45,14 @@ const SinglePost: React.FC<SinglePostProps> = ({
         "
         >
            <div className="flex flex-row justify-between text-sm">
-              <span>Author: {userEmail}</span>
+              <span>Author: {post?.userEmail}</span>
               <span className="pr-5">
                 {" "}
-                Created: {formatTime(createdAt)}{" "}
+                Created: {formatTime(post?.createdAt)}{" "}
               </span>
             </div>
-          <h3 className="text-2xl font-bold">{title}</h3>
-          <p className="text-lg font-light "> {isReadMore ? body.substring(0, 220) : body}... </p>
+          <h3 className="text-2xl font-bold">{post?.title}</h3>
+          <p className="text-lg font-light "> {isReadMore ? post?.body.substring(0, 220) : post?.body}... </p>
           {isReadMore && (
             <div>
               <Button variant="destructive">Read More</Button>

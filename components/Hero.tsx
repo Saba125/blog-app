@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import SinglePost from "./SinglePost";
 import { formatTime } from "@/lib/format";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 const Hero = async () => {
   const singlePost = await prisma.post.findFirst();
   return (
@@ -60,7 +61,9 @@ const Hero = async () => {
             <h3 className="text-2xl font-bold">{singlePost?.title}</h3>
             <p className="text-lg font-light ">{singlePost?.body}</p>
             <div>
-              <Button variant="destructive">Read More</Button>
+              <Button asChild variant="destructive">
+                <Link href={`/post/${singlePost?.id}`}>Read more...</Link>
+              </Button>
             </div>
           </div>
         </div>
