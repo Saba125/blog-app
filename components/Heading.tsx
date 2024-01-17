@@ -16,16 +16,28 @@ const Heading: React.FC<HeadingProps> = ({
 }) => {
   return (
     <>
-      <div
-        className={clsx(
-          `font-bold`,
-          center ? "text-center" : "text-start",
-          large && "text-4xl",
-          medium && "text-2xl",
-        )}
-      >
-        <h3> {title} </h3>
-        <p>{subTitle}</p>
+      <div>
+        <h3
+          className={clsx(
+            `font-bold`,
+            center ? "text-center" : "text-start",
+            large && "text-4xl",
+            medium && "text-2xl",
+          )}
+        >
+          {" "}
+          {title}{" "}
+        </h3>
+        <p
+          className={clsx(
+            `font-light text-neutral-500`,
+            center ? "text-center" : "text-start",
+            large && "text-xl",
+            medium && "text-lg",
+          )}
+        >
+          {subTitle}
+        </p>
       </div>
     </>
   );
