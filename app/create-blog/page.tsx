@@ -8,29 +8,43 @@ import { Textarea } from "@/components/ui/textarea";
 import { categories } from "@/lib/categories";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 import {
   FieldValues,
   SubmitHandler,
   useForm,
   useFormState,
 } from "react-hook-form";
-
+import prisma from "@/lib/prisma";
+import axios from "axios";
 const CreateBlog = () => {
-  const { data } = useSession();
+  const { data, status } = useSession();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<FieldValues>({
     defaultValues: {
       title: "",
       category: "",
       body: "",
       imageUrl: "",
+      userEmail: data?.user?.email,
     },
   });
+  useEffect(() => {
+    if (data?.user?.email) {
+      setValue("userEmail", data.user.email);
+    }
+  }, [data, setValue]);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
+    try {
+      const response = await axios.post("/api/blog", data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
@@ -80,8 +94,16 @@ const CreateBlog = () => {
               />
             </div>
             <div className="flex flex-col gap-3">
-              <Label htmlFor="categories">Select a category</Label>
-              <Select id="categories" name="categories">
+              <Label htmlFor="category">Select a category</Label>
+              <Select
+                {...register("category", { required: true })}
+                id="category"
+                name="category"
+                aria-invalid={errors.title ? "true" : "false"}
+                className={clsx(
+                  errors.category?.type === "required" && "border-rose-500",
+                )}
+              >
                 {categories.map((category) => (
                   <option key={category} value={category}>
                     {" "}
@@ -93,17 +115,25 @@ const CreateBlog = () => {
             <div className="flex flex-col gap-3">
               <Label htmlFor="body">Blog body</Label>
               <Textarea
-                name="body"
                 id="body"
                 placeholder="Type your information here..."
+                {...register("body", { required: true })}
+                aria-invalid={errors.body ? "true" : "false"}
+                className={clsx(
+                  errors.blog?.type === "required" && "border-rose-500",
+                )}
               />
             </div>
             <div className="flex flex-col gap-3">
               <Label htmlFor="imageUrl">Image Url</Label>
               <Input
-                id="image-url"
-                name="imageUrl"
+                id="imageUrl"
                 placeholder="Enter image url..."
+                {...register("imageUrl", { required: true })}
+                aria-invalid={errors.imageUrl ? "true" : "false"}
+                className={clsx(
+                  errors.imageUrl?.type === "required" && "border-rose-500",
+                )}
               />
             </div>
             <div className="flex flex-col gap-3">
