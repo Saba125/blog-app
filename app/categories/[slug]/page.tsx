@@ -21,7 +21,9 @@ const Category = async ({ params: { slug } }: { params: { slug: string } }) => {
   return (
     <div className="mt-10">
       <Container>
-        {post?.map((post) => <SinglePost isReadMore={false} key={post.id} post={post} />)}
+        {post?.map((post) => (
+          <SinglePost  isReadMore={false} key={post.id} post={post} />
+        ))}
       </Container>
     </div>
   );

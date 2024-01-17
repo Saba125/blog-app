@@ -1,4 +1,5 @@
 import Container from "../Container";
+import Heading from "../Heading";
 import CategoryItem from "./CategoryItem";
 import prisma from "@/lib/prisma";
 const CategoryList = async () => {
@@ -10,16 +11,7 @@ const CategoryList = async () => {
   "
     >
       <Container>
-        <h3
-          className="
-          text-xl
-          font-bold
-          sm:text-xl
-        md:text-2xl
-        "
-        >
-          Popular categories
-        </h3>
+        <Heading title="Popular categories"  medium />
         <div
           className="
         mt-4

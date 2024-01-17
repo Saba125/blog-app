@@ -20,9 +20,9 @@ const PostPage = async ({
     />;
   }
   return (
-    <div>
+    <div className="mt-10">
       <Container>
-        <SinglePost  isReadMore={false} post={post} />
+        <SinglePost redirect isReadMore={false} post={post} />
       </Container>
     </div>
   );

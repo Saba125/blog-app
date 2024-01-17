@@ -1,4 +1,5 @@
 "use client";
+import { useTheme } from "next-themes";
 import { MoonLoader } from "react-spinners";
 const Loading = () => {
   return (
@@ -10,7 +11,7 @@ const Loading = () => {
     justify-center
     "
     >
-      <MoonLoader size={90} color="#ffffff" speedMultiplier={1} />
+      <MoonLoader size={90} color="#000" speedMultiplier={1} />
     </div>
   );
 };

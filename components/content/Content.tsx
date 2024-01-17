@@ -1,4 +1,5 @@
 import Container from "../Container";
+import Heading from "../Heading";
 import PostContent from "./PostContent";
 import SideContent from "./SideContent";
 
@@ -6,7 +7,7 @@ const Content = () => {
   return (
     <Container>
       <div className="mt-[20px]">
-        <h3 className="text-[34px] font-bold">Recent posts</h3>
+        <Heading large title="Recent posts" />
         <div className="mt-[20px] flex flex-row">
           <div className="flex-[5]">
             <PostContent />

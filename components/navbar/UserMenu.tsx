@@ -51,13 +51,13 @@ const UserMenu = () => {
           >
             {status === "unauthenticated" ? (
               <>
-                <UserItem href="/signin" label="Log in" />
+                <UserItem href="/signin" label="Sign in" />
                 <UserItem href="/signup" label="Sign up" />
               </>
             ) : (
               <>
-                <UserItem href="/signin" label="Create blog" />
-                <UserItem href="/signin" label="View blog" />
+                <UserItem href="/create-blog" label="Create blog" />
+                <UserItem href="/view-blog" label="View my blogs" />
                 <UserItem href="" onClick={() => signOut()} label="Log out" />
               </>
             )}

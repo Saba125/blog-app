@@ -45,7 +45,7 @@ model Account {
 
 model Post {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  catName   String   @unique
+  catName   String
   title     String
   body      String
   imageUrl  String
