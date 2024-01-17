@@ -10,7 +10,7 @@ export default forwardRef<
     <div className="relative">
       <select
         className={cn(
-          "border-input ring-offset-background focus:ring-ring h-10 w-full appearance-none truncate rounded-md border bg-white py-2 pl-3 pr-8 text-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ",
+          "border-input ring-offset-background focus:ring-ring bg-background h-10 w-full appearance-none truncate rounded-md border py-2 pl-3 pr-8 text-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ",
           className,
         )}
         {...props}
