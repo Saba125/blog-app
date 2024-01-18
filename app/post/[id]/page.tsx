@@ -12,7 +12,6 @@ const PostPage = async ({
   const post = await prisma.post.findUnique({
     where: { id },
   });
-  console.log(post);
   if (!post) {
     <EmptyState
       title="No posts found"

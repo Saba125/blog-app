@@ -9,12 +9,7 @@ import { categories } from "@/lib/categories";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import {
-  FieldValues,
-  SubmitHandler,
-  useForm,
-  useFormState,
-} from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import prisma from "@/lib/prisma";
 import axios from "axios";
 import toast from "react-hot-toast";
