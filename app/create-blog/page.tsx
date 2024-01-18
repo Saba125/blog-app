@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { categories } from "@/lib/categories";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   FieldValues,
   SubmitHandler,
@@ -17,8 +17,11 @@ import {
 } from "react-hook-form";
 import prisma from "@/lib/prisma";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { Loader2 } from "lucide-react";
 const CreateBlog = () => {
   const { data, status } = useSession();
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -39,11 +42,18 @@ const CreateBlog = () => {
     }
   }, [data, setValue]);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setIsLoading(true);
     try {
       const response = await axios.post("/api/blog", data);
-      console.log(response);
+      if (response.status === 200) {
+        toast.success("Blog successfully Created.");
+      } else toast.error("Could not create blog");
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -137,8 +147,9 @@ const CreateBlog = () => {
               />
             </div>
             <div className="flex flex-col gap-3">
-              <Button type="submit" variant="outline">
-                Submit{" "}
+              <Button disabled={isLoading} type="submit" variant="outline">
+                {isLoading && <Loader2 size={16} className="animate-spin" />}
+                Submit
               </Button>
             </div>
           </form>
