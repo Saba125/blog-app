@@ -30,13 +30,21 @@ const Form: React.FC<FormProps> = ({ type }) => {
   });
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (type === "login") {
+      setIsLoading(true);
       try {
         await signIn("credentials", {
           ...data,
           redirect: false,
+        }).then((callback) => {
+          if (callback?.ok) {
+            toast.success("Successfully logged in");
+            router.push("/");
+            setIsLoading(false);
+          } else {
+            toast.error("Invalid credentials");
+            setIsLoading(false);
+          }
         });
-        toast.success("Successfully signed in");
-        router.push("/");
       } catch (error) {
         console.log(error);
       }
