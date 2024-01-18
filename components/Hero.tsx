@@ -1,11 +1,6 @@
 import Container from "./Container";
-import Image from "next/image";
 import prisma from "@/lib/prisma";
-import { Button } from "./ui/button";
 import SinglePost from "./SinglePost";
-import { formatTime } from "@/lib/format";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 const Hero = async () => {
   const singlePost = await prisma.post.findFirst();
   return (

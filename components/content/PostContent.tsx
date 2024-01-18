@@ -1,7 +1,4 @@
 import React from "react";
-import Container from "../Container";
-import { Button } from "../ui/button";
-import Image from "next/image";
 import SinglePost from "../SinglePost";
 interface Props {}
 

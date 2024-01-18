@@ -1,5 +1,4 @@
 "use client";
-import { useTheme } from "next-themes";
 import { MoonLoader } from "react-spinners";
 const Loading = () => {
   return (

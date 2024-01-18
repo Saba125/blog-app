@@ -10,7 +10,6 @@ import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import prisma from "@/lib/prisma";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
@@ -125,7 +124,7 @@ const CreateBlog = () => {
                 {...register("body", { required: true })}
                 aria-invalid={errors.body ? "true" : "false"}
                 className={clsx(
-                  errors.blog?.type === "required" && "border-rose-500",
+                  errors.body?.type === "required" && "border-rose-500",
                 )}
               />
             </div>

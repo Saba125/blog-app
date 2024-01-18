@@ -1,10 +1,8 @@
-import { useState } from "react";
 import Container from "../Container";
 import Logo from "./Logo";
 import SocialLinks from "./SocialLinks";
 import { ModeToggle } from "./ThemeToggle";
 import UserMenu from "./UserMenu";
-import clsx from "clsx";
 
 const Navbar = () => {
   return (
