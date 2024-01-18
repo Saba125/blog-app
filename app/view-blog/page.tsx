@@ -21,8 +21,8 @@ const ViewBlog = async () => {
   return (
     <div>
       <Container>
-        {userBlogs.map((blog) => (
-          <SinglePost isReadMore post={blog} />
+        {userBlogs.map((blog, index) => (
+          <SinglePost key={index} isReadMore post={blog} />
         ))}
       </Container>
     </div>
