@@ -13,10 +13,12 @@ const PostPage = async ({
     where: { id },
   });
   if (!post) {
-    <EmptyState
-      title="No posts found"
-      subtitle="Please choose another post."
-    />;
+    return (
+      <EmptyState
+        title="No posts found"
+        subtitle="Please choose another post."
+      />
+    );
   }
   return (
     <div className="mt-10">
