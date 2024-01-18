@@ -1,5 +1,6 @@
 import React from "react";
 import SinglePost from "../SinglePost";
+import prisma from "@/lib/prisma";
 interface Props {}
 
 const PostContent = async (props: Props) => {
