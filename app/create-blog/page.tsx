@@ -13,6 +13,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
+import ImageUpload from "@/components/Inputs/ImageUpload";
 const CreateBlog = () => {
   const { data, status } = useSession();
   const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +22,7 @@ const CreateBlog = () => {
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm<FieldValues>({
     defaultValues: {
       title: "",
@@ -30,6 +32,15 @@ const CreateBlog = () => {
       userEmail: data?.user?.email,
     },
   });
+  const imageUrl = watch("imageUrl");
+  const setCustomValues = (id: string, value: any) => {
+    //? Sets value for category constant
+    setValue(id, value, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: true,
+    });
+  };
   useEffect(() => {
     if (data?.user?.email) {
       setValue("userEmail", data.user.email);
@@ -138,6 +149,10 @@ const CreateBlog = () => {
                 className={clsx(
                   errors.imageUrl?.type === "required" && "border-rose-500",
                 )}
+              />
+              <ImageUpload
+                value={imageUrl}
+                onChange={(value) => setCustomValues("imageUrl", value)}
               />
             </div>
             <div className="flex flex-col gap-3">
