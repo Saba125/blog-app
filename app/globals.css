@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@apply img {
-    rounded-md
+img {
+  border-radius: 10px;
 }
