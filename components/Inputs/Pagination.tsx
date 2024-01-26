@@ -15,6 +15,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, totalPage }) => {
         onClick={() => router.push(`?page=${page - 1}`)}
         variant="destructive"
         disabled={page === 1}
+        size="lg"
       >
         {" "}
         Previous{" "}
@@ -23,6 +24,7 @@ const Pagination: React.FC<PaginationProps> = ({ page, totalPage }) => {
         onClick={() => router.push(`?page=${page + 1}`)}
         variant="destructive"
         disabled={totalPage === page}
+        size="lg"
       >
         {" "}
         Next{" "}
